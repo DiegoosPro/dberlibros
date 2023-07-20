@@ -33,7 +33,7 @@ create table TAB_USUARIOS
    ID_USUARIOS          integer not null auto_increment,
    NOMBRE               varchar(50),
    USUARIO              varchar(50),
-   PASSWORD             varchar(50),
+   PASSWORD             varchar(90),
    PERFIL               varchar(50),
    FECHA                date,
    primary key (ID_USUARIOS)

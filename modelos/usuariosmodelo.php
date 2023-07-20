@@ -4,11 +4,12 @@ require_once 'conexion.php';
 class ModeloUsuarios
 {
 
-static public function mdlGuardarUsuarios($tabla,$datos){
+	static public function mdlGuardarUsuarios($tabla,$datos){
 
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,usuario,password,perfil) VALUES(:NOMBRE ,:USUARIO, :PERFIL) ");
+		$stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,usuario,password,perfil) VALUES(:nombre, :usuario, :password, :perfil) ");
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+
 		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
 		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
 		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
@@ -28,6 +29,8 @@ static public function mdlGuardarUsuarios($tabla,$datos){
 
 
 	}
+
+
 
 
 
@@ -68,7 +71,40 @@ static public function mdlGuardarUsuarios($tabla,$datos){
 
 	}
 
+	static public function mdlEditarUsuarios($tabla,$datos){
+
+
+	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, usuario = :usuario, password = :password, perfil = :perfil WHERE id = :id");
+
+		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+
+		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
+		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
+		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
+		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
+		
+
+
+		if ($stmt->execute()) {
+			
+			return "ok";
+
+		}else{
+
+			return "error";
+		}
+
+		$stmt->close();
+		$stmt->null;
+
+
+	}
+
+
+
+
 }
+
 
 
 

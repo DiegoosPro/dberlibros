@@ -74,7 +74,16 @@
                       <td>".$valores["USUARIO"]."</td>
                       <td>".$valores["PERFIL"]."</td>
                       <td>".$valores["FECHA"]."</td>
-                      <td><button class='btn btn-primary'>Editar</button></td>
+                      <td>
+
+                      <button class='btn btn-primary btnEditarUsuario' idUsuario=".$valores["id"]." data-toggle='modal' data-target='#modalEditarUsuarios'>Editar</button>
+
+                      <button class='btn btn-danger'>Eliminar</button>
+
+
+                      </td>
+
+
 
                       </tr>
 
@@ -86,12 +95,6 @@
 
 
                   ?>
-
-
-               
-              
-
-
                 </tbody>
 
 
@@ -205,6 +208,14 @@
 
         </form>
 
+
+        <?php
+
+        $crearUsuarios = new ControladorUsuarios();
+        $crearUsuarios->ctrCrearUsuarios();
+
+
+        ?>
         
       </div>
       
@@ -327,7 +338,10 @@
         </form>
 
 
-        
+        <?php
+
+        $crearUsuarios = new ControladorUsuarios();
+        $crearUsuarios->ctrEditarUsuarios();
 
 
         ?>
