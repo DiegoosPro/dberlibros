@@ -21,7 +21,7 @@ $(".tablas").on("click", ".btnEditarUsuario", function(){
 		dataType:"json",
 		success:function(respuesta){
 
-		    $("#id").val(respuesta["id"]);
+		    $("#id_usuarios").val(respuesta["id_usuarios"]);
 
 			$("#editarNombre").val(respuesta["nombre"]);
 			$("#editarUsuario").val(respuesta["usuario"]);
@@ -37,3 +37,43 @@ $(".tablas").on("click", ".btnEditarUsuario", function(){
 
 
 })
+
+
+
+$(".tablas").on("click", ".btnEliminarUsuario", function(){
+
+
+	var idUsuario = $(this).attr("idUsuario");
+
+
+
+   swal({
+    title: '¿Está seguro de borrar el usuario?',
+    text: "¡Si no lo está puede cancelar la acción!",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    cancelButtonText: 'Cancelar',
+    confirmButtonText: '¡Si, borrar usuario!'
+   }).then(function(result){
+
+    if(result.value){
+
+      window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario;
+
+  }
+
+
+
+   })
+
+
+
+
+
+
+})
+
+
+

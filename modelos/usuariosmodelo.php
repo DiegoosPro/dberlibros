@@ -1,8 +1,10 @@
-<?php 
+<?php
 
 require_once 'conexion.php';
-class ModeloUsuarios
-{
+
+
+class ModeloUsuarios{
+
 
 	static public function mdlGuardarUsuarios($tabla,$datos){
 
@@ -33,11 +35,6 @@ class ModeloUsuarios
 
 
 
-
-
-
-
-	
 	//mostrar usuarios
 
 	static public function mdlMostrarUsuarios($tabla,$item,$valor){
@@ -71,12 +68,14 @@ class ModeloUsuarios
 
 	}
 
+
+
 	static public function mdlEditarUsuarios($tabla,$datos){
 
 
-	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, usuario = :usuario, password = :password, perfil = :perfil WHERE id = :id");
+	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, usuario = :usuario, password = :password, perfil = :perfil WHERE id_usuarios = :id_usuarios");
 
-		$stmt->bindParam(":id", $datos["id"], PDO::PARAM_INT);
+		$stmt->bindParam(":id_usuarios", $datos["id_usuarios"], PDO::PARAM_INT);
 
 		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
 		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
@@ -101,11 +100,38 @@ class ModeloUsuarios
 	}
 
 
-
-
-}
-
+	static public function mdlBorrarUsuarios($tabla,$datos){
 
 
 
- ?>
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla  WHERE id = :id");
+
+		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+
+	
+
+		if ($stmt->execute()) {
+			
+			return "ok";
+
+		}else{
+
+			return "error";
+		}
+
+		$stmt->close();
+		$stmt->null;
+
+
+	}
+
+
+
+
+
+
+
+	}
+
+
+

@@ -1,22 +1,72 @@
-<?php 
+<?php
 
-/**
- * 
- */
-class ControladorUsuarios
-{
-	//mostar usuarios
-	 static public function ctrMostrarUsuarios($item,$valor)
-	{
-		$tabla = "tab_usuarios";
+class ControladorUsuarios{
 
-		$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
-		return $respuesta;
+
+
+	static public function ctrIngresarUsuario(){
+
+
+		if (isset($_POST["ingresoUsuario"])) {
+
+			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingresoUsuario"])){
+
+				$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG');
+
+
+			$tabla = "tab_usuarios";
+
+			$item = "usuario";
+			$valor = $_POST['ingresoUsuario'];
+
+			$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
+
+
+			if ($respuesta["usuario"] == $_POST["ingresoUsuario"] && $respuesta["password"] == $encriptar) {
+
+				$_SESSION['iniciarSesion'] = "ok";
+
+				$_SESSION["id"] = $respuesta["id"];
+				$_SESSION["nombre"] = $respuesta["nombre"];
+				$_SESSION["usuario"] = $respuesta["usuario"];
+				$_SESSION["perfil"] = $respuesta["perfil"];
+
+
+				echo '<script>
+
+				window.location = "index.php";
+
+
+				</script>';
+
+				
+			}else{
+
+
+				echo '<br><div class="alert alert-danger">Error al ingresar, vuelvo a intentarlo</div>';
+
+
+
+			}
+
+
+
+
+
+
+
+				
+			}
+
+			
+		}
+
+
 	}
 
 
 
-static public function ctrCrearUsuarios(){
+	static public function ctrCrearUsuarios(){
 
 		if (isset($_POST['usuario'])) {
 
@@ -29,7 +79,6 @@ static public function ctrCrearUsuarios(){
 						    'usuario' => $_POST['usuario'],
 						    'password' => $encriptar,
 						    'perfil' => $_POST['perfil']);
-							
 
 
 			
@@ -89,6 +138,29 @@ static public function ctrCrearUsuarios(){
 
 	}
 
+
+
+
+
+
+
+	//mostrar usuarios
+
+	static public function ctrMostrarUsuarios($item,$valor){
+
+		$tabla = "tab_usuarios";
+
+		$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
+
+		return $respuesta;
+
+
+	}
+
+
+
+
+
 	static public function ctrEditarUsuarios(){
 
 		if (isset($_POST['editarUsuario'])) {
@@ -98,7 +170,7 @@ static public function ctrCrearUsuarios(){
 			$encriptar = crypt($_POST["editarPassword"], '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG');
 
 
-			$datos =  array('id' => $_POST['id'],
+			$datos =  array('id_usuarios' => $_POST['id_usuarios'],
 							'nombre' => $_POST['editarNombre'],
 						    'usuario' => $_POST['editarUsuario'],
 						    'password' => $encriptar,
@@ -167,13 +239,74 @@ static public function ctrCrearUsuarios(){
 
 	}
 
+
+	static public function ctrBorrarUsuarios(){
+
+
+		if (isset($_GET["idUsuario"])) {
+
+			$tabla = "tab_usuarios";
+			$datos = $_GET['idUsuario'];
+
+
+			$respuesta = ModeloUsuarios::mdlBorrarUsuarios($tabla,$datos);
+
+
+			if ($respuesta == "ok") {
+
+
+			echo'<script>
+
+					swal({
+						  type: "success",
+						  title: "El usuario ha sido eliminado correctamente",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "usuarios";
+
+									}
+								})
+
+					</script>';
+
+
+			}else{
+
+				echo'<script>
+
+					swal({
+						  type: "error",
+						  title: "El usuario ha sido eliminado",
+						  showConfirmButton: true,
+						  confirmButtonText: "Cerrar"
+						  }).then(function(result){
+									if (result.value) {
+
+									window.location = "usuarios";
+
+									}
+								})
+
+					</script>';
+
+
+
+			}
+
+
+
+
+			
+		}
+
+
+	}
+
+
+	
+
+
 }
-
-
-
-
-
-
-
-
- ?>

@@ -26,9 +26,6 @@
           <div class="box">
             <div class="box-header">
 
-
-              
-
               <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarUsuarios">
               
               Agregar Usuarios  
@@ -70,15 +67,17 @@
                       <tr>
 
                       <td>".($key+1)."</td>
-                      <td>".$valores["NOMBRE"]."</td>
-                      <td>".$valores["USUARIO"]."</td>
-                      <td>".$valores["PERFIL"]."</td>
-                      <td>".$valores["FECHA"]."</td>
+                      <td>".$valores["nombre"]."</td>
+                      <td>".$valores["usuario"]."</td>
+                      <td>".$valores["perfil"]."</td>
+                      <td>".$valores["fecha"]."</td>
+
+
                       <td>
 
-                      <button class='btn btn-primary btnEditarUsuario' idUsuario=".$valores["id"]." data-toggle='modal' data-target='#modalEditarUsuarios'>Editar</button>
+                      <button class='btn btn-primary btnEditarUsuario' idUsuario=".$valores["id_usuarios"]." data-toggle='modal' data-target='#modalEditarUsuarios'>Editar</button>
 
-                      <button class='btn btn-danger'>Eliminar</button>
+                      <button class='btn btn-danger btnEliminarUsuario' idUsuario=".$valores["id_usuarios"].">Eliminar</button>
 
 
                       </td>
@@ -95,6 +94,12 @@
 
 
                   ?>
+
+
+               
+              
+
+
                 </tbody>
 
 
@@ -255,7 +260,7 @@
                 <div class="input-group">
 
 
-                  <input type="hidden" class="form-control input-lg" name="id" id="id">
+                  <input type="hidden" class="form-control input-lg" name="id_usuarios" id="id_usuarios">
                   
                 </div>
                 
@@ -354,7 +359,13 @@
 
 
 
-        
+        <?php
+
+        $crearUsuarios = new ControladorUsuarios();
+        $crearUsuarios->ctrBorrarUsuarios();
+
+
+        ?>
 
 
      
