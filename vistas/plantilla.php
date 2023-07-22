@@ -120,7 +120,10 @@
     
     if (isset($_GET["ruta"])) {
 
-      if ($_GET["ruta"]=="usuarios") {
+      if ($_GET["ruta"]=="usuarios" ||
+          $_GET["ruta"]=="libros"
+
+                ) {
 
         include "modulos/".$_GET["ruta"].".php";
         // code...

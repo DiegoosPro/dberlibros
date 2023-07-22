@@ -104,9 +104,9 @@ class ModeloUsuarios{
 
 
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla  WHERE id = :id");
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla  WHERE id_usuarios = :id_usuarios");
 
-		$stmt->bindParam(":id", $datos, PDO::PARAM_INT);
+		$stmt->bindParam(":id_usuarios", $datos, PDO::PARAM_INT);
 
 	
 
