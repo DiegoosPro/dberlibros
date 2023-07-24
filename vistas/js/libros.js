@@ -42,7 +42,7 @@ $(".tablas").on("click", ".btnEliminarLibro", function(){
     confirmButtonColor: '#3085d6',
     cancelButtonColor: '#d33',
     cancelButtonText: 'Cancelar',
-    confirmButtonText: '¡Si, borrar usuario!'
+    confirmButtonText: '¡Si, borrar libros!'
    }).then(function(result){
 
     if(result.value){

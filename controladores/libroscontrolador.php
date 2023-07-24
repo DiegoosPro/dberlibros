@@ -2,6 +2,67 @@
 
 class ControladorLibros{
 
+	static public function ctrIngresarUsuario(){
+
+
+		if (isset($_POST["ingresoUsuario"])) {
+
+			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingresoUsuario"])){
+
+				$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG');
+
+
+			$tabla = "tab_usuarios";
+
+			$item = "usuario";
+			$valor = $_POST['ingresoUsuario'];
+
+			$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
+
+
+			if ($respuesta["usuario"] == $_POST["ingresoUsuario"] && $respuesta["password"] == $encriptar) {
+
+				$_SESSION['iniciarSesion'] = "ok";
+				$_SESSION["id_usuarios"] = $respuesta["id_usuarios"];
+				$_SESSION["nombre"] = $respuesta["nombre"];
+				$_SESSION["usuario"] = $respuesta["usuario"];
+				$_SESSION["perfil"] = $respuesta["perfil"];
+
+
+				echo '<script>
+
+				window.location = "index.php";
+
+
+				</script>';
+
+				
+			}else{
+
+
+				echo '<br><div class="alert alert-danger">Error al ingresar, vuelvo a intentarlo</div>';
+
+
+
+			}
+
+				
+			}
+
+			
+		}
+
+
+	}
+
+
+
+
+
+
+
+
+
 
 	static public function ctrCrearLibros(){
 
@@ -179,7 +240,7 @@ class ControladorLibros{
 
 
 	
-static public function ctrBorrarLibros(){
+	static public function ctrBorrarLibros(){
 
 
 		if (isset($_GET["idLibro"])) {
@@ -233,18 +294,11 @@ static public function ctrBorrarLibros(){
 
 
 			}
-
-
-
-
 			
 		}
 
 
 	}
-
-
-	
 
 
 }
