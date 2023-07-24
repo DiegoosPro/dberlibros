@@ -29,11 +29,11 @@ CREATE TABLE `tab_libros` (
   `disponibilidad` tinyint(4) DEFAULT NULL,
   `stock` int(11) DEFAULT '0',
   PRIMARY KEY (`id_libros`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tab_libros` */
 
-insert  into `tab_libros`(`id_libros`,`titulo`,`autor`,`genero`,`anio_publicacion`,`disponibilidad`,`stock`) values (1,'El código Da Vinci','Dan Brown','Misterio','2003-03-18',1,9);
+insert  into `tab_libros`(`id_libros`,`titulo`,`autor`,`genero`,`anio_publicacion`,`disponibilidad`,`stock`) values (1,'El código Da Vinci','Dan Brownaa','Misterio','2003-03-18',1,9),(3,'bbb','bbb','bbb','2022-07-22',0,57),(5,'zz','zz','zz','2023-07-04',0,3),(9,'diegos','diegos','diegos','2023-07-07',0,33),(10,'gato con botas modificado','aaaqq','aaaqqqqq','2023-07-07',1,332),(11,'qss','qs','qs','2022-12-16',1,22),(12,'mi libro modi','diego modi','aventura modificado','2019-06-24',0,333);
 
 /*Table structure for table `tab_usuarios` */
 
@@ -47,11 +47,11 @@ CREATE TABLE `tab_usuarios` (
   `perfil` varchar(50) DEFAULT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_usuarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tab_usuarios` */
 
-insert  into `tab_usuarios`(`id_usuarios`,`nombre`,`usuario`,`password`,`perfil`,`fecha`) values (1,'Diego','admin','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Administrador','2023-07-21 00:11:13'),(2,'Napo','napo','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Vendedor','2023-07-21 00:16:38'),(4,'Napo modificado1','napo modificado1','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Vendedor modificado1','2023-07-21 16:04:59');
+insert  into `tab_usuarios`(`id_usuarios`,`nombre`,`usuario`,`password`,`perfil`,`fecha`) values (1,'Diegoos','admin','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Administrador','2023-07-24 12:31:04'),(2,'Napo','napo','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Vendedor','2023-07-21 00:16:38'),(4,'admin1','admin1','$2a$07$asxx54ahjppf45sd87a5au1Cam1BmODYmvg125RuJDCajb9smPdx6','Vendedor modificado1','2023-07-24 13:14:10');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
