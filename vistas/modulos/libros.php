@@ -82,10 +82,10 @@
 
                       <td>
 
-                      <button class='btn btn-primary btnEditarUsuario'data-toggle='modal' data-target='#modalEditarUsuarios'>Editar</button>
+                      <button class='btn btn-primary btnEditarLibro' idLibro=".$valores["id_libros"]." data-toggle='modal' data-target='#modalEditarLibros'>Editar</button>
 
-                      <button class='btn btn-danger btnEliminarUsuario' >Eliminar</button>
 
+                      <button class='btn btn-danger btnEliminarLibro' idLibro=".$valores["id_libros"].">Eliminar</button>
 
                       </td>
 
@@ -195,12 +195,13 @@
                       <input type="date" class="form-control input-lg" name="anio_publicacion" placeholder="Fecha de publicación">
                   </div>
               </div>
+              
 
                  <div class="form-group">
 
                   <div class="form-check form-check-lg">
 
-                    <input class="form-check-input" type="checkbox" id="chkDisponibilidad" name="disponibilidad">
+                    <input class="form-check-input" type="checkbox" id="disponibilidad" name="disponibilidad">
                       <label class="form-check-label d-block" for="disponibilidad"><strong style="font-size: 19px;"><br> Disponibilidad</strong></label>
 
                     </div>
@@ -258,7 +259,7 @@
 
 
 
-  <div id="modalEditarUsuarios" class="modal fade" role="dialog">
+  <div id="modalEditarLibros" class="modal fade" role="dialog">
 
     <div class="modal-dialog">
 
@@ -270,7 +271,7 @@
 
             <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-            <h4 class="modal-title">Editar Usuarios</h4>
+            <h4 class="modal-title">Editar Libros</h4>
             
           </div>
 
@@ -285,7 +286,7 @@
                 <div class="input-group">
 
 
-                  <input type="hidden" class="form-control input-lg" name="id_usuarios" id="id_usuarios">
+                  <input type="hidden" class="form-control input-lg" name="id_libros" id="id_libros">
                   
                 </div>
                 
@@ -300,7 +301,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
 
-                  <input type="text" class="form-control input-lg" name="editarNombre" id="editarNombre">
+                  <input type="text" class="form-control input-lg" name="editarTitulo" id="editarTitulo">
                   
                 </div>
                 
@@ -314,7 +315,7 @@
 
                   <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                  <input type="text" class="form-control input-lg" name="editarUsuario" id="editarUsuario">
+                  <input type="text" class="form-control input-lg" name="editarAutor" id="editarAutor">
                   
                 </div>
                 
@@ -325,14 +326,37 @@
 
                 <div class="input-group">
 
-                  <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                  <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                  <input type="password" class="form-control input-lg" name="editarPassword" >
+                  <input type="text" class="form-control input-lg" name="editarGenero" id="editarGenero">
                   
                 </div>
-                
+
+
+
+              <div class="form-group">
+
+                  <div class="input-group">
+
+                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+
+                      <input type="date" class="form-control input-lg" name="editarAnio_publicacion" id="editarAnio_publicacion">
+                  </div>
               </div>
 
+
+
+              <div class="form-group">
+
+                  <div class="form-check form-check-lg">
+
+                    <input class="form-check-input" type="checkbox" id="editarDisponibilidad" name="editarDisponibilidad">
+                      <label class="form-check-label d-block" for="disponibilidad"><strong style="font-size: 19px;"><br> Disponibilidad</strong></label>
+
+                    </div>
+                  </div>
+
+                
 
 
                <div class="form-group">
@@ -341,10 +365,9 @@
 
                   <span class="input-group-addon"><i class="fa fa-th"></i></span>
 
-                  <input type="text" class="form-control input-lg" name="editarPerfil" id="editarPerfil">
+                  <input type="text" class="form-control input-lg" name="editarStock" id="editarStock">
                   
                 </div>
-                
               </div>
 
 
@@ -360,7 +383,7 @@
 
             <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
 
-            <button type="submit" class="btn btn-primary">Editar Usuario</button>
+            <button type="submit" class="btn btn-primary">Editar Libros</button>
             
           </div>
           
@@ -370,8 +393,8 @@
 
         <?php
 
-        $crearUsuarios = new ControladorUsuarios();
-        $crearUsuarios->ctrEditarUsuarios();
+        $crearLibros = new ControladorLibros();
+        $crearLibros->ctrEditarLibros();
 
 
         ?>
@@ -383,11 +406,9 @@
   </div>
 
 
-
         <?php
 
-        $crearUsuarios = new ControladorUsuarios();
-        $crearUsuarios->ctrBorrarUsuarios();
+        $borrarLibros = new ControladorLibros();
+        $borrarLibros->ctrBorrarLibros();
 
-
-        ?>PLibros
+        ?>

@@ -71,44 +71,34 @@ class ModeloLibros{
 	}
 
 
+	static public function mdlEditarLibros($tabla, $datos){
 
-	static public function mdlEditarUsuarios($tabla,$datos){
+    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET titulo = :titulo, autor = :autor, genero = :genero, disponibilidad = :disponibilidad, stock = :stock WHERE id_libros = :id_libros");
 
+    $stmt->bindParam(":id_libros", $datos["id_libros"], PDO::PARAM_INT);
+    $stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
+    $stmt->bindParam(":autor", $datos["autor"], PDO::PARAM_STR);
+    $stmt->bindParam(":genero", $datos["genero"], PDO::PARAM_STR);
+    //$stmt->bindParam(":anio_publicacion", $datos["anio_publicacion"], PDO::PARAM_INT);
+    $stmt->bindParam(":disponibilidad", $datos["disponibilidad"], PDO::PARAM_INT);
+    $stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_INT);
 
-	$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, usuario = :usuario, password = :password, perfil = :perfil WHERE id_usuarios = :id_usuarios");
-
-		$stmt->bindParam(":id_usuarios", $datos["id_usuarios"], PDO::PARAM_INT);
-
-		$stmt->bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-		$stmt->bindParam(":usuario", $datos["usuario"], PDO::PARAM_STR);
-		$stmt->bindParam(":password", $datos["password"], PDO::PARAM_STR);
-		$stmt->bindParam(":perfil", $datos["perfil"], PDO::PARAM_STR);
-		
-
-
-		if ($stmt->execute()) {
-			
-			return "ok";
-
-		}else{
-
-			return "error";
-		}
-
-		$stmt->close();
-		$stmt->null;
-
-
-	}
-
-
-	static public function mdlBorrarUsuarios($tabla,$datos){
+    if ($stmt->execute()) {
+        return "ok";
+    } else {
+        return "error";
+    }
+}
 
 
 
-		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla  WHERE id_usuarios = :id_usuarios");
+	static public function mdlBorrarLibros($tabla,$datos){
 
-		$stmt->bindParam(":id_usuarios", $datos, PDO::PARAM_INT);
+
+
+		$stmt = Conexion::conectar()->prepare("DELETE FROM $tabla  WHERE id_libros = :id_libros");
+
+		$stmt->bindParam(":id_libros", $datos, PDO::PARAM_INT);
 
 	
 
@@ -132,8 +122,9 @@ class ModeloLibros{
 
 
 
+}
 
-	}
+
 
 
 

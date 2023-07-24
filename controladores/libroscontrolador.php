@@ -3,69 +3,6 @@
 class ControladorLibros{
 
 
-
-	static public function ctrIngresarUsuario(){
-
-
-		if (isset($_POST["ingresoUsuario"])) {
-
-			if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["ingresoUsuario"])){
-
-				$encriptar = crypt($_POST["password"], '$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG');
-
-
-			$tabla = "tab_usuarios";
-
-			$item = "usuario";
-			$valor = $_POST['ingresoUsuario'];
-
-			$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
-
-
-			if ($respuesta["usuario"] == $_POST["ingresoUsuario"] && $respuesta["password"] == $encriptar) {
-
-				$_SESSION['iniciarSesion'] = "ok";
-
-				$_SESSION["id"] = $respuesta["id"];
-				$_SESSION["nombre"] = $respuesta["nombre"];
-				$_SESSION["usuario"] = $respuesta["usuario"];
-				$_SESSION["perfil"] = $respuesta["perfil"];
-
-
-				echo '<script>
-
-				window.location = "index.php";
-
-
-				</script>';
-
-				
-			}else{
-
-
-				echo '<br><div class="alert alert-danger">Error al ingresar, vuelvo a intentarlo</div>';
-
-
-
-			}
-
-
-
-
-
-
-
-				
-			}
-
-			
-		}
-
-
-	}
-
-
-
 	static public function ctrCrearLibros(){
 
 		if (isset($_POST['titulo'])) {
@@ -77,7 +14,7 @@ class ControladorLibros{
 						    'autor' => $_POST['autor'],
 						    'genero' => $_POST['genero'],
 						    'anio_publicacion' => $_POST['anio_publicacion'],
-                'disponibilidad' => isset($_POST['disponibilidad']) ? 1 : 0, // 1 si está marcado, 0 si no está marcado
+                			'disponibilidad' => isset($_POST['disponibilidad']) ? 1 : 0, // 1 si está marcado, 0 si no está marcado
 						    'stock' => $_POST['stock']);
 
 
@@ -161,21 +98,20 @@ class ControladorLibros{
 
 
 
-	static public function ctrEditarUsuarios(){
+	static public function ctrEditarLibros(){
 
-		if (isset($_POST['editarLibro'])) {
+		if (isset($_POST['editarTitulo'])) {
 
-			$tabla = "tab_usuarios";
-
-			
+			$tabla = "tab_libros";
 
 
-			$datos =  array('titulo' => $_POST['titulo'],
-						    'autor' => $_POST['autor'],
-						    'genero' => $_POST['genero'],
-						    'anio_publicacion' => $_POST['anio_publicacion'],
-						    'disponibilidad' => $_POST['disponibilidad'],
-						    'stock' => $_POST['stock']);
+			$datos =  array('id_libros' => $_POST['id_libros'],
+							'titulo' => $_POST['editarTitulo'],
+						    'autor' => $_POST['editarAutor'],
+						    'genero' => $_POST['editarGenero'],
+						    'anio_publicacion' => $_POST['editarAnio_publicacion'],
+                			'disponibilidad' => isset($_POST['editarDisponibilidad']) ? 1 : 0, // 1 si está marcado, 0 si no está marcado
+						    'stock' => $_POST['editarStock']);
 
 
 
@@ -203,7 +139,7 @@ class ControladorLibros{
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "usuarios";
+									window.location = "libros";
 
 									}
 								})
@@ -223,7 +159,7 @@ class ControladorLibros{
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "usuarios";
+									window.location = "libros";
 
 									}
 								})
@@ -242,16 +178,16 @@ class ControladorLibros{
 	}
 
 
-	static public function ctrBorrarUsuarios(){
+	
+static public function ctrBorrarLibros(){
 
 
-		if (isset($_GET["idUsuario"])) {
+		if (isset($_GET["idLibro"])) {
 
-			$tabla = "tab_usuarios";
-			$datos = $_GET['idUsuario'];
+			$tabla = "tab_libros";
+			$datos = $_GET['idLibro'];
 
-
-			$respuesta = ModeloUsuarios::mdlBorrarUsuarios($tabla,$datos);
+			$respuesta = ModeloLibros::mdlBorrarLibros($tabla,$datos);
 
 
 			if ($respuesta == "ok") {
@@ -267,7 +203,7 @@ class ControladorLibros{
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "usuarios";
+									window.location = "libros";
 
 									}
 								})
@@ -287,7 +223,7 @@ class ControladorLibros{
 						  }).then(function(result){
 									if (result.value) {
 
-									window.location = "usuarios";
+									window.location = "libros";
 
 									}
 								})
@@ -312,3 +248,7 @@ class ControladorLibros{
 
 
 }
+
+	
+
+
