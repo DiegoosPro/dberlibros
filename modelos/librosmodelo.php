@@ -73,13 +73,13 @@ class ModeloLibros{
 
 	static public function mdlEditarLibros($tabla, $datos){
 
-    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET titulo = :titulo, autor = :autor, genero = :genero, disponibilidad = :disponibilidad, stock = :stock WHERE id_libros = :id_libros");
+    $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET titulo = :titulo, autor = :autor, genero = :genero, anio_publicacion = :anio_publicacion, disponibilidad = :disponibilidad, stock = :stock WHERE id_libros = :id_libros");
 
     $stmt->bindParam(":id_libros", $datos["id_libros"], PDO::PARAM_INT);
     $stmt->bindParam(":titulo", $datos["titulo"], PDO::PARAM_STR);
     $stmt->bindParam(":autor", $datos["autor"], PDO::PARAM_STR);
     $stmt->bindParam(":genero", $datos["genero"], PDO::PARAM_STR);
-    //$stmt->bindParam(":anio_publicacion", $datos["anio_publicacion"], PDO::PARAM_INT);
+	$stmt->bindParam(":anio_publicacion", $datos["anio_publicacion"], PDO::PARAM_STR);
     $stmt->bindParam(":disponibilidad", $datos["disponibilidad"], PDO::PARAM_INT);
     $stmt->bindParam(":stock", $datos["stock"], PDO::PARAM_INT);
 

@@ -165,12 +165,15 @@ class ControladorLibros{
 
 			$tabla = "tab_libros";
 
+        // No es necesario realizar conversión en este punto
+        $datos['anio_publicacion'] = $_POST['editarAnio_publicacion'];
+
 
 			$datos =  array('id_libros' => $_POST['id_libros'],
 							'titulo' => $_POST['editarTitulo'],
 						    'autor' => $_POST['editarAutor'],
 						    'genero' => $_POST['editarGenero'],
-						    'anio_publicacion' => $_POST['editarAnio_publicacion'],
+    						'anio_publicacion' => date('Y-m-d', strtotime($_POST['editarAnio_publicacion'])),
                 			'disponibilidad' => isset($_POST['editarDisponibilidad']) ? 1 : 0, // 1 si está marcado, 0 si no está marcado
 						    'stock' => $_POST['editarStock']);
 

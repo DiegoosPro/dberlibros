@@ -186,15 +186,22 @@
                 
               </div>
 
+</br>
               <div class="form-group">
 
-                  <div class="input-group">
+               <div class="input-group">
 
-                      <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+               <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                 <?php
+                  $fecha_actual = date('Y-m-d', strtotime(str_replace('/', '-', $valores['anio_publicacion'])));
+                   ?>
+                   <input type="date" class="form-control input-lg" name="editarAnio_publicacion" value="<?php echo $fecha_actual; ?>" placeholder="Fecha de publicación">
 
-                      <input type="date" class="form-control input-lg" name="anio_publicacion" placeholder="Fecha de publicación">
                   </div>
-              </div>
+
+                  </div>
+
+
               
 
                  <div class="form-group">
