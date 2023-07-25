@@ -136,10 +136,9 @@ session_start();
 
 
     if ($_GET["ruta"] == "usuarios" ||
-        $_GET["ruta"] == "libros" 
-
-     
-    
+        $_GET["ruta"] == "libros"  ||
+        $_GET["ruta"] == "login"  ||
+        $_GET["ruta"] == "salir"  
 
      ) {
 
@@ -154,12 +153,7 @@ session_start();
 
       include 'modulos/inicio/cajas.php';
 
-
   }
-
-
-
-
 
 
    include 'modulos/footer.php';
@@ -167,18 +161,9 @@ session_start();
 
    echo '</div>';
 
-   
-
-
-
     }else{
 
-    
-
-
       include 'modulos/login.php';
-
-
 
     }
 
