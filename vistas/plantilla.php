@@ -1,3 +1,8 @@
+<?php
+
+session_start();
+
+?>
 
 
 
@@ -115,31 +120,72 @@
 
   <?php
 
-  include 'modulos/header.php';
-     include 'modulos/menu.php';
+
+  if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
+
+    echo '<div class="wrapper">';
+
+
+    include 'modulos/header.php';
+
+    include 'modulos/menu.php';
+
+
+
+  if (isset($_GET["ruta"])) {
+
+
+    if ($_GET["ruta"] == "usuarios" ||
+        $_GET["ruta"] == "libros" 
+
+     
     
-    if (isset($_GET["ruta"])) {
 
-      if ($_GET["ruta"]=="usuarios" ||
-          $_GET["ruta"]=="libros"
+     ) {
 
-                ) {
 
-        include "modulos/".$_GET["ruta"].".php";
-        // code...
-      }
-      // code...
+      include "modulos/".$_GET["ruta"].".php";
+
+    }
+
+
+   
+  }else{
+
+      include 'modulos/inicio/cajas.php';
+
+
+  }
+
+
+
+
+
+
+   include 'modulos/footer.php';
+
+
+   echo '</div>';
+
+   
+
+
+
     }else{
 
-     include 'modulos/inicio/cajas.php';
+    
+
+
+      include 'modulos/login.php';
+
 
 
     }
 
-   
-    include 'modulos/footer.php';
 
-    ?>
+
+
+  ?>
 
 
 
