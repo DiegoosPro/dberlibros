@@ -29,11 +29,11 @@ CREATE TABLE `tab_libros` (
   `disponibilidad` tinyint(4) DEFAULT NULL,
   `stock` int(11) DEFAULT '0',
   PRIMARY KEY (`id_libros`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tab_libros` */
 
-insert  into `tab_libros`(`id_libros`,`titulo`,`autor`,`genero`,`anio_publicacion`,`disponibilidad`,`stock`) values (1,'El código Da Vinci','Dan Brownaa','Misterio','2003-03-18',1,9),(3,'bbb','bbb','bbb','2022-07-22',0,57),(5,'zz','zz','zz','2023-07-04',0,3),(9,'diegos','diegos','diegos','2023-07-07',0,33),(10,'gato con botas modificado','aaaqq','aaaqqqqq','2023-07-07',1,332),(11,'qss','qs','qs','2022-12-16',1,22),(12,'mi libro modi','diego modi','aventura modificado','2019-06-24',0,333);
+insert  into `tab_libros`(`id_libros`,`titulo`,`autor`,`genero`,`anio_publicacion`,`disponibilidad`,`stock`) values (1,'El código Da Vinci','Dan Brownaa','Misterio','2003-03-18',1,9),(9,'diegosS','diegos','diegos','2023-07-07',0,33),(10,'gato con botas modificado','aaaqq','aaaqqqqq','2023-07-07',1,332),(12,'mi libro modi','diego modi','aventura modificado','2019-06-24',0,333),(15,'Cien años de soledad','Gabriel García Márquez','Novela','1967-05-30',1,10),(16,'Don Quijote de la Mancha','Miguel de Cervantes ','Novela','1605-01-16',1,8),(17,'Crimen y castigo','Fyodor Dostoevsky','Novela','1866-02-15',1,5),(18,'El amor en los tiempos del cólera','Gabriel García Márquez','Novela','1985-03-06',1,12),(19,'Rayuela','Julio Cortázar','Novela','1963-01-28',1,6),(20,'Ficciones','Jorge Luis Borges','Cuento','1944-05-28',1,4),(21,'Pedro Páramo','Juan Rulfo','Novela','1955-04-01',1,3),(22,'El Aleph','Jorge Luis Borges','Cuento','1949-05-15',1,7),(23,'La sombra del viento','Carlos Ruiz Zafón','Novela','2001-04-01',1,9),(24,'La casa de los espíritus','Isabel Allende','Novela','1982-06-01',1,11);
 
 /*Table structure for table `tab_usuarios` */
 
@@ -47,11 +47,11 @@ CREATE TABLE `tab_usuarios` (
   `perfil` varchar(50) DEFAULT NULL,
   `fecha` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_usuarios`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 /*Data for the table `tab_usuarios` */
 
-insert  into `tab_usuarios`(`id_usuarios`,`nombre`,`usuario`,`password`,`perfil`,`fecha`) values (1,'Diegoos','admin','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Administrador','2023-07-24 12:31:04'),(2,'Napo','napo','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Vendedor','2023-07-21 00:16:38'),(4,'admin1','admin1','$2a$07$asxx54ahjppf45sd87a5au1Cam1BmODYmvg125RuJDCajb9smPdx6','Vendedor modificado1','2023-07-24 13:14:10');
+insert  into `tab_usuarios`(`id_usuarios`,`nombre`,`usuario`,`password`,`perfil`,`fecha`) values (1,'Diegoos','admin','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Administrador','2023-07-24 12:31:04'),(2,'Napo','napo','$2a$07$asxx54ahjppf45sd87a5auXBm1Vr2M1NV5t/zNQtGHGpS5fFirrbG','Vendedor','2023-07-21 00:16:38'),(4,'admin1','admin1','$2a$07$asxx54ahjppf45sd87a5au1Cam1BmODYmvg125RuJDCajb9smPdx6','Vendedor modificado1','2023-07-24 13:14:10'),(5,'alex','hola','$2a$07$asxx54ahjppf45sd87a5auEKl984fID33lyBClW7OSuuQkFCZQT9a','Vendedor','2023-07-26 11:56:09');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
