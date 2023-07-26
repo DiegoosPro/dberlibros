@@ -42,12 +42,12 @@
                 <thead>
                 <tr>
                   <th>#</th>
-                  <th>titulo</th>
-                  <th>autor</th>
-                  <th>genero</th>
-                  <th>anio_publicacion</th>
-                  <th>disponibilidad</th>
-                  <th>stock</th>
+                  <th>Titulo</th>
+                  <th>Autor</th>
+                  <th>Genero</th>
+                  <th>Año de publicacion</th>
+                  <th>Disponibilidad</th>
+                  <th>Stock</th>
                   <th>Acciones</th>
 
 
